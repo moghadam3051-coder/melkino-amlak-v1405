@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ملکینو | ویترین املاک</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
+    <style>
+        body { font-family: 'Vazirmatn', sans-serif; background-color: #f3f4f6; margin: 0; padding: 0; }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        const { useState } = React;
+        const agents = {
+            "barzin": { name: "برزین", phone: "09121234567", exp: 12, sat: 98, deals: 350, avatar: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=100&q=80" },
+            "tesheker": { name: "تشکری موحد", phone: "09351112233", exp: 8, sat: 95, deals: 210, avatar: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=100&q=80" }
+        };
+        const properties = [
+            { id: 1, agent: "barzin", code: "10398", title: "آپارتمان ۱۶۲ متری الهیه", area: 162, beds: 5, floor: 9, priceM: "145,200,000", priceT: "23,522,400,000", parking: true, storage: true, status: "active", img: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=800&q=80" },
+            { id: 2, agent: "barzin", code: "10412", title: "آپارتمان ۹۸ متری نیاوران", area: 98, beds: 2, floor: 4, priceM: "120,000,000", priceT: "11,760,000,000", parking: true, storage: false, status: "active", img: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=800&q=80" },
+            { id: 3, agent: "tesheker", code: "10789", title: "آپارتمان ۱۴۰ متری فرشته", area: 140, beds: 3, floor: 7, priceM: "138,000,000", priceT: "19,320,000,000", parking: true, storage: true, status: "active", img: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80" },
+            { id: 4, agent: "barzin", code: "10620", title: "آپارتمان ۱۲۵ متری زعفرانیه", area: 125, beds: 3, floor: 6, priceM: "130,000,000", priceT: "16,250,000,000", parking: true, storage: true, status: "sold", img: "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&w=800&q=80" }
+        ];
+        function PropertyCard({ p, onClick }) {
+            return (
+                <div onClick={() => onClick(p)} className="bg-white rounded-2xl shadow-lg overflow-hidden cursor-pointer hover:shadow-xl transition w-full max-w-sm relative">
+                    <div className="relative h-56">
+                        <img src={p.img} alt={p.title} className="w-full h-full object-cover" />
+                        <div className="absolute top-0 right-1/2 translate-x-1/2 bg-purple-700 text-white px-8 py-1 rounded-b-xl font-bold text-lg">{p.code}</div>
+                        {p.status === "sold" && <div className="absolute inset-0 bg-black/60 flex items-center justify-center"><span className="text-white text-xl font-bold bg-red-600 px-6 py-2 rounded-lg">فروخته شد</span></div>}
+                        <div className="absolute bottom-2 right-2 flex gap-2">
+                            {p.parking && <span className="bg-white text-blue-600 rounded-full w-8 h-8 flex items-center justify-center font-bold shadow">P</span>}
+                            {p.storage && <span className="bg-white text-green-600 rounded-full w-8 h-8 flex items-center justify-center font-bold shadow">E</span>}
+                        </div>
+                    </div>
+                    <div className="p-3 bg-purple-50 flex justify-between items-center text-purple-900 font-semibold text-sm">
+                        <div><span className="text-gray-500 text-xs ml-1">متری</span> {p.area}</div>
+                        <div><span className="text-gray-500 text-xs ml-1">خواب</span> {p.beds}</div>
+                        <div><span className="text-gray-500 text-xs ml-1">طبقه</span> {p.floor}</div>
+                    </div>
+                    <div className="p-3 bg-white text-sm border-b border-gray-100">
+                        <div className="flex justify-between items-center mb-2"><span className="text-gray-500">متری</span><span className="font-bold text-purple-900">{p.priceM}</span></div>
+                        <div className="flex justify-between items-center"><span className="text-gray-500">کل</span><span className="font-bold text-purple-900 text-base">{p.priceT}</span></div>
+                    </div>
+                    <div className="p-3 bg-purple-50 flex justify-between items-center">
+                        <span className="text-purple-800 font-bold text-sm">{agents[p.agent].name}</span>
+                        <div className="w-8 h-8 rounded-full overflow-hidden"><img src={agents[p.agent].avatar} alt="consultant" className="w-full h-full object-cover" /></div>
+                    </div>
+                </div>
+            );
+        }
+        function App() {
+            const [view, setView] = useState({ type: 'home' });
+            const goHome = (e) => { if(e) e.preventDefault(); setView({ type: 'home' }); };
+            return (
+                <div className="min-h-screen p-4"><div className="max-w-6xl mx-auto">
+                    <h1 className="text-2xl font-bold text-purple-900 mb-6 cursor-pointer" onClick={goHome}>ملکینو | ویترین املاک</h1>
+                    {view.type === 'home' && (<><h2 className="text-xl font-bold text-gray-700 mb-4">جدیدترین فایل‌ها</h2><div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-center">{properties.filter(p => p.status === 'active').map(p => (<PropertyCard key={p.id} p={p} onClick={() => setView({ type: 'property', data: p })} />))}</div></>)}
+                    {view.type === 'property' && (<div className="bg-white rounded-2xl shadow-lg overflow-hidden max-w-2xl mx-auto"><div className="relative h-72"><img src={view.data.img} className="w-full h-full object-cover" /><div className="absolute top-0 right-1/2 translate-x-1/2 bg-purple-700 text-white px-8 py-1 rounded-b-xl font-bold text-lg">{view.data.code}</div></div><div className="p-6"><h2 className="text-2xl font-bold text-purple-900 mb-4">{view.data.title}</h2><div className="flex justify-between border-b py-2"><span>متراژ:</span><span className="font-bold">{view.data.area} متر</span></div><div className="flex justify-between border-b py-2"><span>قیمت کل:</span><span className="font-bold text-purple-900">{view.data.priceT} تومان</span></div><div className="mt-6 p-4 bg-purple-50 rounded-xl cursor-pointer" onClick={() => setView({ type: 'agent', data: view.data.agent })}><p className="font-bold text-purple-900">مشاور: {agents[view.data.agent].name}</p><p className="text-sm text-gray-600">مشاهده صفحه اختصاصی مشاور ←</p></div><button onClick={goHome} className="mt-6 text-purple-700 font-bold">بازگشت به صفحه اصلی</button></div></div>)}
+                    {view.type === 'agent' && (<><div className="bg-purple-700 text-white rounded-2xl p-6 mb-6 flex justify-between items-center"><div className="flex items-center gap-4"><div className="w-16 h-16 rounded-full overflow-hidden bg-purple-400"><img src={agents[view.data].avatar} className="w-full h-full object-cover" /></div><div><h2 className="text-2xl font-bold">{agents[view.data].name}</h2><p className="text-purple-200">{agents[view.data].phone}</p></div></div><div className="text-center"><div className="text-xl font-bold">{agents[view.data].exp}</div><div className="text-xs text-purple-200">سال تجربه</div></div></div><h3 className="text-lg font-bold mb-4">فایل‌های فعال این مشاور</h3><div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-center">{properties.filter(p => p.agent === view.data && p.status === 'active').map(p => (<PropertyCard key={p.id} p={p} onClick={() => setView({ type: 'property', data: p })} />))}</div><button onClick={goHome} className="mt-6 text-purple-700 font-bold">بازگشت به صفحه اصلی</button></>)}
+                </div></div>
+            );
+        }
+        ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+    </script>
+</body>
+</html>
