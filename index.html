@@ -1,57 +1,136 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#6d28d9"><title>ملکینو | ویترین املاک</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<style>
-:root{--p:#6d28d9;--p2:#7c3aed;--ink:#201638;--muted:#766b87;--bg:#f7f5fb;--line:#ece7f4;--white:#fff;--green:#15803d;--red:#dc2626}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:Vazirmatn,Tahoma,sans-serif}button,input,select,textarea{font:inherit}button{cursor:pointer;border:0}.wrap{max-width:1160px;margin:auto;padding:18px}.top{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:5}.topin{max-width:1160px;margin:auto;padding:12px 18px;display:flex;align-items:center;justify-content:space-between;gap:12px}.brand{font-size:25px;font-weight:800;color:var(--p);text-decoration:none}.brand small{display:block;font-size:11px;color:var(--muted);font-weight:500}.btn{border-radius:12px;padding:10px 16px;background:var(--p);color:#fff;font-weight:700}.btn.light{background:#f1eafe;color:var(--p)}.btn.gray{background:#eeeaf4;color:#433653}.btn.red{background:#fee2e2;color:#991b1b}.hero{padding:32px 22px;border-radius:24px;background:linear-gradient(120deg,#4c1d95,#7c3aed);color:white;margin:22px 0}.hero h1{margin:0 0 8px;font-size:clamp(24px,4vw,36px)}.hero p{margin:0;color:#eee5ff}.tools{display:flex;gap:10px;flex-wrap:wrap;margin:18px 0}.field{width:100%;padding:12px 13px;border:1px solid #ddd5e9;border-radius:11px;background:#fff;outline:none;min-width:0}.field:focus{border-color:var(--p);box-shadow:0 0 0 3px #6d28d91a}.search{flex:1;min-width:180px}.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(255px,1fr));gap:16px}.card{background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:0 5px 20px #38205c0a}.photo{height:190px;background:#eee6fa;display:flex;align-items:center;justify-content:center;overflow:hidden}.photo img{width:100%;height:100%;object-fit:cover}.noimg{font-size:48px;color:#a78bfa}.body{padding:14px}.tag{display:inline-block;background:#f1eafe;color:var(--p);border-radius:20px;padding:4px 10px;font-size:12px;font-weight:700}.title{font-weight:800;font-size:17px;margin:9px 0}.meta{display:flex;gap:10px;flex-wrap:wrap;color:var(--muted);font-size:13px}.price{font-weight:800;color:var(--p);margin-top:12px}.agent{border-top:1px solid var(--line);margin-top:12px;padding-top:10px;display:flex;justify-content:space-between;align-items:center;font-size:13px}.empty{text-align:center;color:var(--muted);padding:40px 10px}.panel{background:#fff;border:1px solid var(--line);border-radius:18px;padding:18px;margin:20px 0}.formgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.formgrid .wide{grid-column:1/-1}label{display:block;font-size:13px;color:#514563;margin:0 0 5px}.check{display:flex;gap:8px;align-items:center}.check input{width:18px;height:18px}.row{display:flex;gap:9px;flex-wrap:wrap;align-items:center}.hidden{display:none!important}.muted{color:var(--muted);font-size:13px}.notice{padding:12px;border-radius:12px;background:#f1eafe;color:#4c1d95;margin:12px 0}.notice.err{background:#fee2e2;color:#991b1b}.notice.ok{background:#dcfce7;color:#166534}.modal{position:fixed;inset:0;background:#160d25aa;z-index:20;display:flex;align-items:center;justify-content:center;padding:16px}.modalbox{background:#fff;border-radius:18px;padding:20px;width:min(520px,100%);max-height:90vh;overflow:auto}.foot{text-align:center;color:#9489a3;font-size:12px;padding:35px 10px}@media(max-width:620px){.topin{padding:10px 13px}.brand{font-size:22px}.formgrid{grid-template-columns:1fr}.hero{padding:25px 18px}.wrap{padding:13px}.grid{grid-template-columns:1fr}}
-</style></head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ملکینو | ویترین املاک</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
+    <style>
+        body { font-family: 'Vazirmatn', sans-serif; background-color: #f3f4f6; margin: 0; padding: 0; }
+    </style>
+</head>
 <body>
-<header class="top"><div class="topin"><a class="brand" href="index.html">ملکینو<small>ویترین هوشمند املاک</small></a><div class="row"><button class="btn light" id="myLinkBtn">صفحه مشاور</button><button class="btn" id="panelBtn">پنل مشاور</button></div></div></header>
-<main class="wrap">
-<section class="hero"><h1>فایل‌های ملکی، مرتب و همیشه در دسترس</h1><p>فایل‌های مشاوران را ببینید یا صفحه اختصاصی مشاور خود را بسازید.</p></section>
-<div id="message" class="hidden"></div>
-<section id="profileBanner" class="notice hidden"></section>
-<section class="tools"><input id="search" class="field search" placeholder="جست‌وجو در عنوان، محله یا کد فایل..."><select id="categoryFilter" class="field" style="max-width:170px"><option value="">همه فایل‌ها</option><option value="sale">فروش</option><option value="rent">رهن و اجاره</option><option value="presale">پیش‌فروش</option></select><button class="btn light" id="clearBtn">پاک‌کردن فیلتر</button></section>
-<div id="pageTitle" class="row" style="justify-content:space-between;margin:10px 0 14px"><h2 style="margin:0;font-size:20px">آخرین فایل‌های ملکینو</h2><span id="count" class="muted"></span></div>
-<section id="listings" class="grid"><div class="empty">در حال دریافت فایل‌ها...</div></section>
-<section id="panel" class="panel hidden"><div class="row" style="justify-content:space-between"><h2 style="margin:0">پنل مشاور</h2><button id="logoutBtn" class="btn red hidden">خروج</button></div><div id="authArea"><p class="muted">برای ثبت و مدیریت فایل‌ها وارد حساب خود شوید. اگر حساب ندارید، ثبت‌نام کنید.</p><div class="formgrid"><div><label>ایمیل</label><input id="email" class="field" type="email" autocomplete="email" placeholder="name@example.com"></div><div><label>رمز عبور</label><input id="password" class="field" type="password" autocomplete="current-password" placeholder="حداقل ۶ نویسه"></div></div><div class="row" style="margin-top:12px"><button id="loginBtn" class="btn">ورود</button><button id="signupBtn" class="btn light">ساخت حساب جدید</button></div></div>
-<div id="profileArea" class="hidden"><p class="muted">مشخصات صفحه عمومی شما</p><div class="formgrid"><div><label>نام مشاور / املاک</label><input id="advisorName" class="field" placeholder="مثلاً املاک سعید"></div><div><label>شماره تماس</label><input id="advisorPhone" class="field" placeholder="09..."></div><div class="wide"><label>شناسه صفحه (انگلیسی، بدون فاصله)</label><input id="advisorSlug" class="field" placeholder="saeed-realestate"></div></div><div class="row" style="margin-top:10px"><button id="saveProfileBtn" class="btn">ذخیره مشخصات</button><button id="copyLinkBtn" class="btn light">کپی لینک صفحه من</button></div><div id="myPageUrl" class="muted" style="margin-top:8px"></div>
-<hr style="border:0;border-top:1px solid var(--line);margin:22px 0"><h3 id="formTitle">ثبت فایل جدید</h3><form id="propertyForm"><input id="editId" type="hidden"><div class="formgrid"><div class="wide"><label>عنوان ملک</label><input id="pTitle" class="field" required placeholder="مثلاً آپارتمان ۱۲۰ متری دوخواب"></div><div><label>نوع فایل</label><select id="pCategory" class="field"><option value="sale">فروش</option><option value="rent">رهن و اجاره</option><option value="presale">پیش‌فروش</option></select></div><div><label>کد فایل</label><input id="pCode" class="field" placeholder="مثلاً M-1001"></div><div><label>متراژ (متر)</label><input id="pArea" class="field" type="number" min="0"></div><div><label>تعداد خواب</label><input id="pBeds" class="field" type="number" min="0"></div><div><label>طبقه</label><input id="pFloor" class="field" type="number"></div><div><label>قیمت هر متر (تومان)</label><input id="pMeter" class="field" type="number" min="0"></div><div><label>قیمت کل (تومان)</label><input id="pTotal" class="field" type="number" min="0"></div><div><label>مبلغ رهن (تومان)</label><input id="pDeposit" class="field" type="number" min="0"></div><div><label>اجاره ماهانه (تومان)</label><input id="pRent" class="field" type="number" min="0"></div><div><label>محله</label><input id="pNeighborhood" class="field"></div><div><label>شماره تماس فایل</label><input id="pPhone" class="field" placeholder="09..."></div><div class="wide"><label>نشانی / محدوده</label><input id="pAddress" class="field"></div><div class="wide"><label>لینک عکس (در صورت وجود)</label><input id="pImage" class="field" type="url" placeholder="https://..."></div><div class="wide"><label>توضیحات</label><textarea id="pDescription" class="field" rows="3"></textarea></div><div class="row"><label class="check"><input id="pParking" type="checkbox"> پارکینگ</label><label class="check"><input id="pStorage" type="checkbox"> انباری</label></div></div><div class="row" style="margin-top:14px"><button class="btn" type="submit">ذخیره فایل</button><button class="btn gray" type="button" id="cancelEditBtn">انصراف از ویرایش</button></div></form><h3 style="margin-top:25px">فایل‌های من</h3><div id="myProperties" class="grid"></div></div></section>
-</main><footer class="foot">ملکینو — بستری برای معرفی فایل‌های مشاوران املاک</footer>
-<div id="authModal" class="modal hidden"><div class="modalbox"><div class="row" style="justify-content:space-between"><h3 style="margin:0">ورود به پنل مشاور</h3><button id="closeModal" class="btn gray">بستن</button></div><p class="muted">برای مدیریت فایل‌ها، وارد حساب کاربری شوید.</p></div></div>
-<script>
-(()=>{
-const SUPABASE_URL='https://yfhqykaicwscmxsulobr.supabase.co';
-const SUPABASE_KEY='sb_publishable_gc9pvN3zN0NPHbz4tZKqjQ_uEKLnbdl';
-const db=window.supabase.createClient(SUPABASE_URL,SUPABASE_KEY);
-const $=id=>document.getElementById(id);let session=null,advisor=null,allProperties=[];
-const money=n=>n?new Intl.NumberFormat('fa-IR').format(Number(n))+' تومان':'توافقی';
-const safe=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-function msg(t,type=''){const el=$('message');el.className='notice '+(type==='err'?'err':type==='ok'?'ok':'');el.textContent=t;el.classList.remove('hidden');window.scrollTo({top:0,behavior:'smooth'});}
-function slugify(s){return String(s||'').toLowerCase().trim().replace(/\s+/g,'-').replace(/[^a-z0-9-]/g,'').replace(/-+/g,'-').replace(/^-|-$/g,'')}
-function kind(v){return v==='rent'?'رهن و اجاره':v==='presale'?'پیش‌فروش':'فروش'}
-function priceText(p){if(p.category==='rent')return 'رهن: '+money(p.deposit)+' | اجاره: '+money(p.monthly_rent);return 'قیمت کل: '+money(p.total_price)}
-function card(p){const a=p.advisor||{};return `<article class="card"><div class="photo">${p.image_url?`<img src="${safe(p.image_url)}" alt="${safe(p.title)}" loading="lazy" onerror="this.parentElement.innerHTML='<div class=noimg>⌂</div>'">`:'<div class="noimg">⌂</div>'}</div><div class="body"><span class="tag">${kind(p.category)}</span><div class="title">${safe(p.title)}</div><div class="meta"><span>📐 ${p.area?safe(p.area)+' متر':'متراژ نامشخص'}</span>${p.beds!=null?`<span>🛏 ${safe(p.beds)} خواب</span>`:''}${p.floor!=null?`<span>طبقه ${safe(p.floor)}</span>`:''}</div><div class="price">${priceText(p)}</div><div class="meta" style="margin-top:7px">${p.neighborhood?'📍 '+safe(p.neighborhood):''} ${p.code?' · کد '+safe(p.code):''}</div><div class="agent"><span>${safe(a.display_name||'مشاور ملکینو')}</span>${(p.phone||a.phone)?`<a class="btn light" href="tel:${safe(p.phone||a.phone)}">تماس</a>`:''}</div></div></article>`}
-function render(){const q=$('search').value.trim().toLowerCase(),cat=$('categoryFilter').value;let rows=allProperties.filter(p=>(!cat||p.category===cat)&&(!q||[p.title,p.neighborhood,p.address,p.code,p.description].join(' ').toLowerCase().includes(q)));$('listings').innerHTML=rows.length?rows.map(card).join(''):'<div class="empty">فایلی مطابق جست‌وجوی شما پیدا نشد.</div>';$('count').textContent=rows.length+' فایل';}
-async function loadPublic(){let query=db.from('properties').select('*').eq('status','active').order('created_at',{ascending:false});const slug=new URLSearchParams(location.search).get('advisor');if(slug){const {data:a}=await db.from('advisors').select('*').eq('slug',slug).maybeSingle();if(a){$('pageTitle').querySelector('h2').textContent='فایل‌های '+a.display_name;query=query.eq('advisor_id',a.id)}else{$('pageTitle').querySelector('h2').textContent='صفحه مشاور پیدا نشد'}}const {data,error}=await query;if(error){$('listings').innerHTML='<div class="empty">دریافت فایل‌ها با خطا روبه‌رو شد. تنظیمات پایگاه داده را بررسی کنید.</div>';return}const ids=[...new Set((data||[]).map(p=>p.advisor_id).filter(Boolean))];let advisors=[];if(ids.length){const r=await db.from('advisors').select('id,display_name,slug,phone').in('id',ids);advisors=r.data||[]}const map=Object.fromEntries(advisors.map(a=>[a.id,a]));allProperties=(data||[]).map(p=>({...p,advisor:map[p.advisor_id]||{}}));render()}
-async function getSession(){const {data}=await db.auth.getSession();session=data.session; if(session) await loadAdvisor();updateAuthUI()}
-async function loadAdvisor(){if(!session)return;const {data}=await db.from('advisors').select('*').eq('id',session.user.id).maybeSingle();advisor=data||null;if(advisor){$('advisorName').value=advisor.display_name||'';$('advisorPhone').value=advisor.phone||'';$('advisorSlug').value=advisor.slug||'';$('myPageUrl').textContent=location.origin+location.pathname+'?advisor='+advisor.slug;await loadMine()}else{$('profileArea').classList.remove('hidden')}}
-function updateAuthUI(){const logged=!!session;$('authArea').classList.toggle('hidden',logged);$('profileArea').classList.toggle('hidden',!logged);$('logoutBtn').classList.toggle('hidden',!logged);if(logged&&!advisor)$('profileArea').classList.remove('hidden')}
-async function loadMine(){if(!session)return;const {data,error}=await db.from('properties').select('*').eq('advisor_id',session.user.id).order('created_at',{ascending:false});if(error){$('myProperties').innerHTML='<p class="muted">خطا در دریافت فایل‌های شما.</p>';return} $('myProperties').innerHTML=(data||[]).length?data.map(p=>`<article class="card"><div class="body"><span class="tag">${kind(p.category)} · ${p.status==='active'?'فعال':'بایگانی'}</span><div class="title">${safe(p.title)}</div><div class="meta">${safe(p.area||'—')} متر · ${priceText(p)}</div><div class="row" style="margin-top:12px"><button class="btn light" onclick="window.melkinoEdit('${p.id}')">ویرایش</button><button class="btn gray" onclick="window.melkinoArchive('${p.id}','${p.status==='active'?'archived':'active'}')">${p.status==='active'?'بایگانی':'فعال‌سازی'}</button></div></div></article>`).join(''):'<p class="muted">هنوز فایلی ثبت نکرده‌اید.</p>'}
-$('panelBtn').onclick=()=>{$('panel').classList.remove('hidden');$('panel').scrollIntoView({behavior:'smooth'});if(!session)$('email').focus()};$('myLinkBtn').onclick=()=>{if(advisor)location.href=location.pathname+'?advisor='+advisor.slug;else{$('panelBtn').click();msg('ابتدا وارد پنل شوید و مشخصات صفحه مشاور را ثبت کنید.')}};$('search').oninput=render;$('categoryFilter').onchange=render;$('clearBtn').onclick=()=>{$('search').value='';$('categoryFilter').value='';render()};$('closeModal').onclick=()=>$('authModal').classList.add('hidden');
-$('loginBtn').onclick=async()=>{const {data,error}=await db.auth.signInWithPassword({email:$('email').value.trim(),password:$('password').value});if(error)return msg(error.message,'err');session=data.session;await loadAdvisor();updateAuthUI();msg('با موفقیت وارد شدید.','ok')};
-$('signupBtn').onclick=async()=>{const {data,error}=await db.auth.signUp({email:$('email').value.trim(),password:$('password').value});if(error)return msg(error.message,'err');if(!data.session){msg('حساب ساخته شد. ایمیل خود را برای تأیید باز کنید؛ سپس با همان ایمیل و رمز وارد شوید.','ok')}else{session=data.session;await loadAdvisor();updateAuthUI();msg('حساب شما ساخته شد.','ok')}};
-$('logoutBtn').onclick=async()=>{await db.auth.signOut();session=null;advisor=null;updateAuthUI();$('myProperties').innerHTML='';msg('از حساب خارج شدید.','ok')};
-$('saveProfileBtn').onclick=async()=>{if(!session)return;const display_name=$('advisorName').value.trim(),phone=$('advisorPhone').value.trim(),slug=slugify($('advisorSlug').value);if(!display_name||!slug)return msg('نام مشاور و شناسه صفحه را وارد کنید.','err');const {data,error}=await db.from('advisors').upsert({id:session.user.id,display_name,phone,slug},{onConflict:'id'}).select().single();if(error)return msg(error.message,'err');advisor=data;$('myPageUrl').textContent=location.origin+location.pathname+'?advisor='+slug;msg('مشخصات صفحه مشاور ذخیره شد.','ok')};
-$('copyLinkBtn').onclick=async()=>{if(!advisor)return msg('ابتدا مشخصات مشاور را ذخیره کنید.','err');const url=location.origin+location.pathname+'?advisor='+advisor.slug;try{await navigator.clipboard.writeText(url);msg('لینک صفحه شما کپی شد.','ok')}catch(e){msg(url)}};
-function resetForm(){$('propertyForm').reset();$('editId').value='';$('formTitle').textContent='ثبت فایل جدید'}$('cancelEditBtn').onclick=resetForm;
-$('propertyForm').onsubmit=async e=>{e.preventDefault();if(!session||!advisor)return msg('ابتدا وارد شوید و مشخصات مشاور را ذخیره کنید.','err');const v=id=>$(id).value.trim();const num=id=>v(id)===''?null:Number(v(id));const payload={advisor_id:session.user.id,title:v('pTitle'),category:v('pCategory'),code:v('pCode')||null,area:num('pArea'),beds:num('pBeds'),floor:num('pFloor'),price_per_meter:num('pMeter'),total_price:num('pTotal'),deposit:num('pDeposit'),monthly_rent:num('pRent'),phone:v('pPhone')||advisor.phone||null,neighborhood:v('pNeighborhood')||null,address:v('pAddress')||null,image_url:v('pImage')||null,description:v('pDescription')||null,parking:$('pParking').checked,storage:$('pStorage').checked,status:'active'};const id=v('editId');let result=id?await db.from('properties').update(payload).eq('id',id).eq('advisor_id',session.user.id):await db.from('properties').insert(payload);if(result.error)return msg(result.error.message,'err');resetForm();await loadMine();await loadPublic();msg('فایل با موفقیت ذخیره شد.','ok')};
-window.melkinoEdit=async id=>{const {data,error}=await db.from('properties').select('*').eq('id',id).single();if(error)return msg(error.message,'err');const m={pTitle:'title',pCategory:'category',pCode:'code',pArea:'area',pBeds:'beds',pFloor:'floor',pMeter:'price_per_meter',pTotal:'total_price',pDeposit:'deposit',pRent:'monthly_rent',pPhone:'phone',pNeighborhood:'neighborhood',pAddress:'address',pImage:'image_url',pDescription:'description'};Object.entries(m).forEach(([k,v])=>$(k).value=data[v]??'');$('pParking').checked=!!data.parking;$('pStorage').checked=!!data.storage;$('editId').value=id;$('formTitle').textContent='ویرایش فایل';$('propertyForm').scrollIntoView({behavior:'smooth'})};
-window.melkinoArchive=async(id,status)=>{if(!confirm(status==='archived'?'این فایل بایگانی شود؟':'این فایل دوباره فعال شود؟'))return;const {error}=await db.from('properties').update({status}).eq('id',id).eq('advisor_id',session.user.id);if(error)return msg(error.message,'err');await loadMine();await loadPublic();msg('وضعیت فایل تغییر کرد.','ok')};
-(async()=>{await getSession();await loadPublic();})();
-})();
-</script></body></html>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const { useState } = React;
+
+        const agents = {
+            "barzin": { name: "برزین", phone: "09121234567", exp: 12, sat: 98, deals: 350, avatar: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=100&q=80" },
+            "tesheker": { name: "تشکری موحد", phone: "09351112233", exp: 8, sat: 95, deals: 210, avatar: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=100&q=80" }
+        };
+
+        const properties = [
+            { id: 1, agent: "barzin", code: "10398", title: "آپارتمان ۱۶۲ متری الهیه", area: 162, beds: 5, floor: 9, priceM: "145,200,000", priceT: "23,522,400,000", parking: true, storage: true, status: "active", img: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=800&q=80" },
+            { id: 2, agent: "barzin", code: "10412", title: "آپارتمان ۹۸ متری نیاوران", area: 98, beds: 2, floor: 4, priceM: "120,000,000", priceT: "11,760,000,000", parking: true, storage: false, status: "active", img: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=800&q=80" },
+            { id: 3, agent: "tesheker", code: "10789", title: "آپارتمان ۱۴۰ متری فرشته", area: 140, beds: 3, floor: 7, priceM: "138,000,000", priceT: "19,320,000,000", parking: true, storage: true, status: "active", img: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80" },
+            { id: 4, agent: "barzin", code: "10620", title: "آپارتمان ۱۲۵ متری زعفرانیه", area: 125, beds: 3, floor: 6, priceM: "130,000,000", priceT: "16,250,000,000", parking: true, storage: true, status: "sold", img: "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&w=800&q=80" }
+        ];
+
+        function PropertyCard({ p, onClick }) {
+            return (
+                <div onClick={() => onClick(p)} className="bg-white rounded-2xl shadow-lg overflow-hidden cursor-pointer hover:shadow-xl transition w-full max-w-sm relative">
+                    <div className="relative h-56">
+                        <img src={p.img} alt={p.title} className="w-full h-full object-cover" />
+                        <div className="absolute top-0 right-1/2 translate-x-1/2 bg-purple-700 text-white px-8 py-1 rounded-b-xl font-bold text-lg">{p.code}</div>
+                        {p.status === "sold" && <div className="absolute inset-0 bg-black/60 flex items-center justify-center"><span className="text-white text-xl font-bold bg-red-600 px-6 py-2 rounded-lg">فروخته شد</span></div>}
+                        <div className="absolute bottom-2 right-2 flex gap-2">
+                            {p.parking && <span className="bg-white text-blue-600 rounded-full w-8 h-8 flex items-center justify-center font-bold shadow">P</span>}
+                            {p.storage && <span className="bg-white text-green-600 rounded-full w-8 h-8 flex items-center justify-center font-bold shadow">E</span>}
+                        </div>
+                    </div>
+                    <div className="p-3 bg-purple-50 flex justify-between items-center text-purple-900 font-semibold text-sm">
+                        <div><span className="text-gray-500 text-xs ml-1">متری</span> {p.area}</div>
+                        <div><span className="text-gray-500 text-xs ml-1">خواب</span> {p.beds}</div>
+                        <div><span className="text-gray-500 text-xs ml-1">طبقه</span> {p.floor}</div>
+                    </div>
+                    <div className="p-3 bg-white text-sm border-b border-gray-100">
+                        <div className="flex justify-between items-center mb-2"><span className="text-gray-500">متری</span><span className="font-bold text-purple-900">{p.priceM}</span></div>
+                        <div className="flex justify-between items-center"><span className="text-gray-500">کل</span><span className="font-bold text-purple-900 text-base">{p.priceT}</span></div>
+                    </div>
+                    <div className="p-3 bg-purple-50 flex justify-between items-center">
+                        <span className="text-purple-800 font-bold text-sm">{agents[p.agent].name}</span>
+                        <div className="w-8 h-8 rounded-full overflow-hidden"><img src={agents[p.agent].avatar} alt="consultant" className="w-full h-full object-cover" /></div>
+                    </div>
+                </div>
+            );
+        }
+
+        function App() {
+            const [view, setView] = useState({ type: 'home' });
+            const goHome = (e) => { if(e) e.preventDefault(); setView({ type: 'home' }); };
+
+            return (
+                <div className="min-h-screen p-4">
+                    <div className="max-w-6xl mx-auto">
+                        <h1 className="text-2xl font-bold text-purple-900 mb-6 cursor-pointer" onClick={goHome}>ملکینو | ویترین املاک</h1>
+
+                        {view.type === 'home' && (
+                            <>
+                                <h2 className="text-xl font-bold text-gray-700 mb-4">جدیدترین فایل‌ها</h2>
+                                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-center">
+                                    {properties.filter(p => p.status === 'active').map(p => (
+                                        <PropertyCard key={p.id} p={p} onClick={() => setView({ type: 'property', data: p })} />
+                                    ))}
+                                </div>
+                            </>
+                        )}
+
+                        {view.type === 'property' && (
+                            <div className="bg-white rounded-2xl shadow-lg overflow-hidden max-w-2xl mx-auto">
+                                <div className="relative h-72">
+                                    <img src={view.data.img} className="w-full h-full object-cover" />
+                                    <div className="absolute top-0 right-1/2 translate-x-1/2 bg-purple-700 text-white px-8 py-1 rounded-b-xl font-bold text-lg">{view.data.code}</div>
+                                </div>
+                                <div className="p-6">
+                                    <h2 className="text-2xl font-bold text-purple-900 mb-4">{view.data.title}</h2>
+                                    <div className="flex justify-between border-b py-2"><span>متراژ:</span><span className="font-bold">{view.data.area} متر</span></div>
+                                    <div className="flex justify-between border-b py-2"><span>قیمت کل:</span><span className="font-bold text-purple-900">{view.data.priceT} تومان</span></div>
+                                    <div className="mt-6 p-4 bg-purple-50 rounded-xl cursor-pointer" onClick={() => setView({ type: 'agent', data: view.data.agent })}>
+                                        <p className="font-bold text-purple-900">مشاور: {agents[view.data.agent].name}</p>
+                                        <p className="text-sm text-gray-600">مشاهده صفحه اختصاصی مشاور ←</p>
+                                    </div>
+                                    <button onClick={goHome} className="mt-6 text-purple-700 font-bold">بازگشت به صفحه اصلی</button>
+                                </div>
+                            </div>
+                        )}
+
+                        {view.type === 'agent' && (
+                            <>
+                                <div className="bg-purple-700 text-white rounded-2xl p-6 mb-6 flex justify-between items-center">
+                                    <div className="flex items-center gap-4">
+                                        <div className="w-16 h-16 rounded-full overflow-hidden bg-purple-400">
+                                            <img src={agents[view.data].avatar} className="w-full h-full object-cover" />
+                                        </div>
+                                        <div>
+                                            <h2 className="text-2xl font-bold">{agents[view.data].name}</h2>
+                                            <p className="text-purple-200">{agents[view.data].phone}</p>
+                                        </div>
+                                    </div>
+                                    <div className="text-center">
+                                        <div className="text-xl font-bold">{agents[view.data].exp}</div>
+                                        <div className="text-xs text-purple-200">سال تجربه</div>
+                                    </div>
+                                </div>
+                                <h3 className="text-lg font-bold mb-4">فایل‌های فعال این مشاور</h3>
+                                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-center">
+                                    {properties.filter(p => p.agent === view.data && p.status === 'active').map(p => (
+                                        <PropertyCard key={p.id} p={p} onClick={() => setView({ type: 'property', data: p })} />
+                                    ))}
+                                </div>
+                                <button onClick={goHome} className="mt-6 text-purple-700 font-bold">بازگشت به صفحه اصلی</button>
+                            </>
+                        )}
+                    </div>
+                </div>
+            );
+        }
+
+        ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+    </script>
+</body>
+</html>
